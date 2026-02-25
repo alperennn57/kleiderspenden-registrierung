@@ -1,5 +1,4 @@
-// Konstante: erste zwei Ziffern der PLZ der Geschäftsstelle
-// (Kannst du später ändern, wenn du willst)
+
 const GESCHAEFTSSTELLE_PLZ_PREFIX = "70";
 
 const form = document.getElementById("spendenForm");
@@ -32,19 +31,19 @@ function aktualisiereAnzeige() {
   if (radioAbholung.checked) {
     abholadresseBereich.classList.remove("d-none");
 
-    // bei Abholung: Felder verpflichtend
+    
     strasseInput.required = true;
     plzInput.required = true;
     ortInput.required = true;
   } else {
     abholadresseBereich.classList.add("d-none");
 
-    // bei Geschäftsstelle: Abholadresse nicht nötig
+    
     strasseInput.required = false;
     plzInput.required = false;
     ortInput.required = false;
 
-    // optional: Felder leeren
+    
     strasseInput.value = "";
     plzInput.value = "";
     ortInput.value = "";
@@ -79,7 +78,7 @@ form.addEventListener("submit", (e) => {
       return;
     }
 
-    // PLZ prüfen: erste zwei Ziffern müssen passen
+    
     const prefix = plz.substring(0, 2);
     if (prefix !== GESCHAEFTSSTELLE_PLZ_PREFIX) {
       setFehler(`Abholung nicht möglich: Die PLZ muss mit "${GESCHAEFTSSTELLE_PLZ_PREFIX}" beginnen.`);
@@ -89,12 +88,12 @@ form.addEventListener("submit", (e) => {
     ortText = `${strasse}, ${plz} ${ort}`;
   }
 
-  // Datum und Uhrzeit erzeugen
+  
   const now = new Date();
   const datum = now.toLocaleDateString("de-DE");
   const uhrzeit = now.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
 
-  // Daten per URL-Parameter zur Bestätigungsseite schicken
+  
   const params = new URLSearchParams({
     uebergabeart,
     kleidungsart,
@@ -107,5 +106,5 @@ form.addEventListener("submit", (e) => {
   window.location.href = `bestaetigung.html?${params.toString()}`;
 });
 
-// einmal initial auf richtigen Zustand setzen
+
 aktualisiereAnzeige();

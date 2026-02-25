@@ -81,11 +81,11 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Bestätigungs-Logik direkt hier (klein & übersichtlich) -->
+  
   <script>
     const params = new URLSearchParams(window.location.search);
 
-    // Sicher ausgeben: immer innerText (kein innerHTML)
+    
     document.getElementById("outUebergabeart").innerText = params.get("uebergabeart") || "-";
     document.getElementById("outKleidungsart").innerText = params.get("kleidungsart") || "-";
     document.getElementById("outKrisengebiet").innerText = params.get("krisengebiet") || "-";
